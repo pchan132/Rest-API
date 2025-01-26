@@ -1,0 +1,8 @@
+npm init
+npm install express
+npm i nodemon --seve-dev
+npm i body-parser
+npm i mysql2
+npm i cors
+
+npm i body-parser cors mysql2 express
