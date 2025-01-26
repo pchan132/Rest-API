@@ -1,0 +1,28 @@
+                  การต่อ mysql เข้ากับ node.js
+ลง libray: mysql 
+--------------------------------------------
+mysql = libray ที่ช่วยทำให้คุยกับฐานข้อมูลด้วย ภาษา SQL ได้งยิง่ขึน
+ลง mysql (ผ่าน npm install express)
+ดูผลลัพธ์ผ่าน package.json ได้ ตรง dependency
+-----------------------------
+npm install mysql2
+-----------------------------
+-Promise คือสิ่งที่ทำให้เราสามารถ handle เหตุการณ์แบบนี้ได้ คือ หลังจากที่ข้อมูลส่งกลับมา (จาก asynchrous) จะให้ javascript (ในทีนี้คือ nodejs) จัดการอย่างไรต่อบ้าง
+-ท่าปกติของการ handle Promise คือ .then (ต่อหลังจาก function Promise) และ .catch (ต่อหลังจาก .then เพื่อทำการ handle error) เช่น ท่าแบบด้านบน
+-ทีนี้ปัจจุบันมีท่า async, await ที่สามารถจัดการ promise ได้แบบเดียวกันกับการใช้ .then และสามารถใช้ try, catch เพื่อทำการ handle error ลองดูตัวอย่าง code ด้านล่างเพ่ือเทียบกับ code .then, .catch
+------------------------------------------------------
+async await
+  // async ต้อง ใช้ คู่กับ await
+app.get ('/testdb-new', async (req, res) => {
+  // สร้าง connection ไปยังฐานข้อมูล
+  // await รอจนกว่า จะหาข้อมูลเสร็จ
+  const conn = await mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'root',
+    database : 'tutorials',
+    port : 8889,
+  })
+});
+
+ใช้ try กับ catch ในการ handle error
