@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql2/promise");
+const cors = require("cors");
 
 const port = 8000;
 
@@ -18,6 +19,7 @@ const initMySql = async () => {
 };
 //////////////////// อย่า ลืม ใส่ app.use(bodyParser.json()); กำหนดประเภทข้อมูลที่จะส่งไปให้ server ใช้งาน
 app.use(bodyParser.json());
+app.use(cors()); // ใช้งาน cors สำหรับการทำให้ server สามารถรับข้อมูลจาก client ที่อยู่ใน domain อื่นได้
 ////////////////////////////////////////////////////////////////
 // GET /users สำหรับ get users ทั้งหมดที่บันทึกเข้าไปออกมา R
 app.get("/users", async (req, res) => {
