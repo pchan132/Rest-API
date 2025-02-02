@@ -53,6 +53,23 @@ input.form, textarea {
 
 /* เพิ่ม code ส่วนนี้สำหรับการ handle ที่ขนาดหน้าจอเล็ก ให้แสดงผลออกมาตามโจทย์ */
 
+.message {
+  background-color: lightblue;
+  padding : 10px;
+  margin-bottom: 10px;
+  display : none;
+}
+
+.message.success {
+  background-color: lightgreen;
+  display : block;
+}
+
+.message.danger {
+  background-color: lightcoral;
+  display : block;
+}
+
 @media screen and (max-width: 768px) {
   .flex {
     flex-direction: column;
